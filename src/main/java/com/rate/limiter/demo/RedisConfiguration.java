@@ -26,4 +26,11 @@ public class RedisConfiguration {
     Resource scriptSource = new ClassPathResource("redis/token_bucket_request_rate_limiter.lua");
     return RedisScript.of(scriptSource, Boolean.class);
   }
+
+  @Bean
+  public RedisScript<Boolean> slidingWindowLogRequestRateLimiterScript() {
+    Resource scriptSource =
+        new ClassPathResource("redis/sliding_window_log_request_rate_limiter.lua");
+    return RedisScript.of(scriptSource, Boolean.class);
+  }
 }
